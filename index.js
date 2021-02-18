@@ -131,6 +131,11 @@ function CloudWatchLogger(logGroupName) {
 		logsSource.onNext(obj);
 	};
 
+	this.dispose = function() {
+		subscription.dispose();
+		logsSource.dispose();
+	}
+
 	/* Log group functions */
 	function _createLogGroupIfDoesntExist(name) {
 		return _checkLogGroupExists(name)
